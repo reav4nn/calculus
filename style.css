@@ -1,0 +1,209 @@
+/* calculus - gtk4/adwaita stylesheet */
+
+.display-box {
+    background: alpha(@card_bg_color, 0.55);
+    border-radius: 20px;
+    padding: 20px 24px 16px 24px;
+    margin: 8px 8px 4px 8px;
+    border: 1px solid alpha(@borders, 0.18);
+    box-shadow:
+        0 8px 32px alpha(black, 0.08),
+        inset 0 1px 0 alpha(white, 0.12);
+}
+
+.display-expr {
+    font-size: 15px;
+    font-weight: 400;
+    color: alpha(@view_fg_color, 0.55);
+    min-height: 22px;
+    transition: color 200ms ease;
+}
+
+.display-result {
+    font-size: 42px;
+    font-weight: 300;
+    letter-spacing: -0.5px;
+    color: @view_fg_color;
+    min-height: 52px;
+    transition: all 250ms cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.display-result.err {
+    color: @error_color;
+}
+
+.result-pop {
+    animation: pop 300ms cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+@keyframes pop {
+    0%   { opacity: 0.6; }
+    50%  { opacity: 0.85; }
+    100% { opacity: 1.0; }
+}
+
+/* buttons */
+
+.button-grid {
+    padding: 4px 4px 8px 4px;
+}
+
+.calc-btn {
+    border-radius: 16px;
+    font-size: 20px;
+    font-weight: 500;
+    min-height: 52px;
+    min-width: 52px;
+    transition: all 150ms cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    background: alpha(@card_bg_color, 0.45);
+    border: 1px solid alpha(@borders, 0.12);
+    box-shadow:
+        0 2px 8px alpha(black, 0.04),
+        inset 0 1px 0 alpha(white, 0.08);
+    color: @view_fg_color;
+}
+
+.calc-btn:hover {
+    background: alpha(@card_bg_color, 0.7);
+    box-shadow:
+        0 4px 16px alpha(black, 0.08),
+        inset 0 1px 0 alpha(white, 0.14);
+    border-color: alpha(@borders, 0.22);
+}
+
+.calc-btn:active {
+    background: alpha(@card_bg_color, 0.85);
+    box-shadow: inset 0 2px 4px alpha(black, 0.06);
+    transition: all 50ms ease;
+}
+
+.calc-btn.op {
+    background: alpha(@accent_bg_color, 0.15);
+    color: @accent_color;
+    font-weight: 600;
+    border-color: alpha(@accent_bg_color, 0.18);
+}
+
+.calc-btn.op:hover {
+    background: alpha(@accent_bg_color, 0.28);
+    border-color: alpha(@accent_bg_color, 0.32);
+}
+
+.calc-btn.op:active {
+    background: alpha(@accent_bg_color, 0.40);
+}
+
+.calc-btn.accent {
+    background: @accent_bg_color;
+    color: @accent_fg_color;
+    font-weight: 700;
+    font-size: 24px;
+    border: none;
+    box-shadow:
+        0 4px 16px alpha(@accent_bg_color, 0.35),
+        inset 0 1px 0 alpha(white, 0.15);
+}
+
+.calc-btn.accent:hover {
+    background: lighter(@accent_bg_color);
+    box-shadow:
+        0 6px 24px alpha(@accent_bg_color, 0.45),
+        inset 0 1px 0 alpha(white, 0.20);
+}
+
+.calc-btn.accent:active {
+    background: darker(@accent_bg_color);
+    box-shadow:
+        0 2px 8px alpha(@accent_bg_color, 0.25),
+        inset 0 2px 4px alpha(black, 0.10);
+}
+
+.calc-btn.destructive {
+    background: alpha(@error_bg_color, 0.15);
+    color: @error_color;
+    font-weight: 600;
+    border-color: alpha(@error_bg_color, 0.15);
+}
+
+.calc-btn.destructive:hover {
+    background: alpha(@error_bg_color, 0.28);
+    border-color: alpha(@error_bg_color, 0.30);
+}
+
+.calc-btn.destructive:active {
+    background: alpha(@error_bg_color, 0.40);
+}
+
+.calc-btn.special {
+    background: alpha(@card_bg_color, 0.30);
+    color: alpha(@view_fg_color, 0.75);
+    font-weight: 500;
+    font-size: 18px;
+}
+
+.calc-btn.special:hover {
+    background: alpha(@card_bg_color, 0.55);
+    color: @view_fg_color;
+}
+
+.calc-btn.special:active {
+    background: alpha(@card_bg_color, 0.70);
+}
+
+/* history */
+
+.history-panel {
+    background: alpha(@window_bg_color, 0.82);
+}
+
+.history-list {
+    padding: 4px 0;
+}
+
+.history-row {
+    padding: 12px 14px;
+    border-radius: 14px;
+    background: alpha(@card_bg_color, 0.40);
+    border: 1px solid alpha(@borders, 0.08);
+    transition: all 200ms ease;
+    margin: 3px 6px;
+    box-shadow: 0 1px 4px alpha(black, 0.03);
+}
+
+.history-row:hover {
+    background: alpha(@card_bg_color, 0.65);
+    border-color: alpha(@accent_bg_color, 0.22);
+    box-shadow: 0 2px 8px alpha(black, 0.06);
+}
+
+.history-expr {
+    font-size: 13px;
+    font-weight: 400;
+    color: alpha(@view_fg_color, 0.6);
+}
+
+.history-result {
+    font-size: 18px;
+    font-weight: 600;
+    color: @accent_color;
+}
+
+.history-time {
+    font-size: 11px;
+    color: alpha(@view_fg_color, 0.35);
+}
+
+/* focus */
+
+.calc-btn:focus-visible {
+    outline: 2px solid @accent_color;
+    outline-offset: -2px;
+}
+
+/* window */
+
+headerbar.flat {
+    background: transparent;
+    border: none;
+    box-shadow: none;
+}
