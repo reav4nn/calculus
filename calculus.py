@@ -382,12 +382,25 @@ class CalculatorWindow(Adw.ApplicationWindow):
     def _toggle_theme(self, _btn):
         sm = Adw.StyleManager.get_default()
         dark = sm.get_dark()
+
+        content = self.get_content()
+        content.set_opacity(0.0)
+
         if dark:
             sm.set_color_scheme(Adw.ColorScheme.FORCE_LIGHT)
             self._theme_btn.set_icon_name("weather-clear-night-symbolic")
         else:
             sm.set_color_scheme(Adw.ColorScheme.FORCE_DARK)
             self._theme_btn.set_icon_name("weather-clear-symbolic")
+
+        self._fade_val = 0.0
+        def _step():
+            self._fade_val = min(self._fade_val + 0.08, 1.0)
+            content.set_opacity(self._fade_val)
+            if self._fade_val >= 1.0:
+                return False
+            return True
+        GLib.timeout_add(12, _step)
 
     def _clear_history(self, _btn):
         while (child := self.hist_box.get_first_child()):
