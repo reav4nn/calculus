@@ -39,13 +39,13 @@ python3 calculus.py
 ```
 sudo mkdir -p /opt/calculus
 sudo cp calculus.py style.css /opt/calculus/
-sudo cp io.github.calculus.desktop /usr/share/applications/
+sudo cp calculus.desktop /usr/share/applications/
 ```
 
 or if you want to run it from wherever you cloned it:
 
 ```
-sed "s|/opt/calculus/calculus.py|$(pwd)/calculus.py|" io.github.calculus.desktop > ~/.local/share/applications/io.github.calculus.desktop
+sed "s|/opt/calculus/calculus.py|$(pwd)/calculus.py|" calculus.desktop > ~/.local/share/applications/calculus.desktop
 ```
 
 ## license
