@@ -1,0 +1,12 @@
+[Desktop Entry]
+Name=Calculus
+GenericName=Calculator
+Comment=GTK4/Libadwaita calculator
+Exec=python3 /opt/calculus/calculus.py
+Icon=accessories-calculator
+Terminal=false
+Type=Application
+Categories=GNOME;GTK;Utility;Calculator;
+Keywords=calculator;math;
+StartupNotify=true
+StartupWMClass=io.github.calculus
