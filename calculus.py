@@ -159,6 +159,13 @@ class CalculatorWindow(Adw.ApplicationWindow):
         )
         header.pack_start(hist_btn)
 
+        theme_btn = Gtk.Button(icon_name="weather-clear-symbolic")
+        theme_btn.set_tooltip_text("Toggle dark/light mode")
+        theme_btn.add_css_class("flat")
+        theme_btn.connect("clicked", self._toggle_theme)
+        self._theme_btn = theme_btn
+        header.pack_end(theme_btn)
+
         menu_btn = Gtk.MenuButton(icon_name="open-menu-symbolic")
         menu_btn.add_css_class("flat")
         menu = Gio.Menu()
@@ -371,6 +378,16 @@ class CalculatorWindow(Adw.ApplicationWindow):
         self.fresh = False
         self._refresh_display()
         self.split.set_show_sidebar(False)
+
+    def _toggle_theme(self, _btn):
+        sm = Adw.StyleManager.get_default()
+        dark = sm.get_dark()
+        if dark:
+            sm.set_color_scheme(Adw.ColorScheme.FORCE_LIGHT)
+            self._theme_btn.set_icon_name("weather-clear-night-symbolic")
+        else:
+            sm.set_color_scheme(Adw.ColorScheme.FORCE_DARK)
+            self._theme_btn.set_icon_name("weather-clear-symbolic")
 
     def _clear_history(self, _btn):
         while (child := self.hist_box.get_first_child()):
